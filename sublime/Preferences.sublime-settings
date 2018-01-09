@@ -1,0 +1,26 @@
+{
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/phpstorm/schemes/phpstorm.tmTheme",
+	"font_options":
+	[
+		"gray_antialias",
+		"subpixel_antialias"
+	],
+	"font_size": 21,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 5,
+	"line_padding_top": 5,
+	"material_theme_big_fileicons": true,
+	"material_theme_tabs_separator": true,
+	"open_files_in_new_window": false,
+	"overlay_scroll_bars": "enabled",
+	"theme": "Material-Theme.sublime-theme"
+}

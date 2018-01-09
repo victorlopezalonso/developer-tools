@@ -1,0 +1,17 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Material Theme",
+		"Materialize",
+		"Package Control",
+		"Phpcs",
+		"Vue Syntax Highlight",
+		"VueFormatter",
+		"Vuejs Complete Package",
+		"Vuejs Snippets"
+	]
+}
