@@ -39,7 +39,7 @@
 4. <kbd>cmd</kbd>+<kbd>shift</kbd>+<kbd>P</kbd> -> `Key Bindings`-> add this line
 	`{"enable_autoreload": true}`
 
-#PHPStorm
+# PHPStorm
 
 [http://www.jetbrains.com/phpstorm/eap/](http://www.jetbrains.com/phpstorm/eap/)
 
