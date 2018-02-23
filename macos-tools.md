@@ -1,19 +1,10 @@
 # MacOS tools for development
 
-1. [Browsers](#google-chrome)
-2. [Sublime Text](#sublime-text)
-3. [PHPStorm](#phpstorm)
-4. [Homebrew](#homebrew)
+1. [Sublime Text](#sublime-text)
+2. [PHP Storm](#phpstorm)
+3. [Homebrew](#homebrew)
 5. [iTerm](#iterm)
 6. [Oh My Zsh](#oh-my-zsh)
-7. [Laravel Environment](#laravel-environment)
-
-### Google Chrome
-[https://www.google.com/chrome/browser/desktop/index.html](https://www.google.com/chrome/browser/desktop/index.html)
-
-### Firefox Developer
-
-[https://www.mozilla.org/en-US/firefox/developer/](https://www.mozilla.org/en-US/firefox/developer/)
 
 # Sublime Text
 [https://www.sublimetext.com/3](https://www.sublimetext.com/3)
@@ -102,13 +93,3 @@ highlighting
 open in sublime
 
 	ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
-
-# Laravel Environment
-
-	brew update
-	brew upgrade
-	brew doctor
-	brew install homebrew/php/composer nginx php72 dnsmasq mysql node yarn
-	composer global require laravel/valet
-	valet install
-	valet domain test
