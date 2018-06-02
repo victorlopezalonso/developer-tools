@@ -1,6 +1,11 @@
 {
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/phpstorm/schemes/phpstorm.tmTheme",
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+	"font_size": 21,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
 	"font_options":
 	[
 		"gray_antialias",
