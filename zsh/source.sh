@@ -40,10 +40,53 @@ alias nah="git reset --hard;git clean -df;"
 function gitpush() 
 { 
 	if [[ $1 ]]; then
+		branch="$(git rev-parse --abbrev-ref HEAD)"
 		git add . 
 		git commit -m $1
-		git push
+		git push --set-upstream origin ${branch}
 	else
 		echo 'please write a commit message as the first param';
 	fi
+}
+
+function gapprove()
+{
+	if [[ $1 ]]; then
+		branch="$(git rev-parse --abbrev-ref HEAD)"
+		git checkout $1
+		git branch -D ${branch}
+		git pull --prune
+	else
+		echo 'please enter source branch for correct execution';
+	fi
+}
+
+function apicontroller()
+{
+	php artisan make:controller $1 --api
+}
+
+function apirequest()
+{
+	php artisan make:request Api/$1
+}
+
+function apiresource()
+{
+	php artisan make:resource Api/$1
+}
+
+function admincontroller()
+{
+	php artisan make:controller Admin/$1 --api
+}
+
+function adminrequest()
+{
+	php artisan make:request Admin/$1
+}
+
+function adminresource()
+{
+	php artisan make:resource Admin/$1
 }
