@@ -105,3 +105,9 @@ open in sublime
 ##### import settings
 
 `Go to File -> import settings -> select "phpstorm/phpstorm-settings.jar"`
+
+##### Code Sniffer
+
+`get the phpcs installation directory: which phpcs"`
+`Go to Preferences -> Languages & Frameworks -> PHP -> Code Sniffer -> configure with phpcs installation directory"`
+`Go to Preferences -> Editor -> Inspections -> PHP -> select 'PHP Code Sniffer Validation' and the desired PSR configuration"`

@@ -5,7 +5,7 @@
 	brew update
 	brew upgrade
 	brew doctor
-	brew install composer php-cs-fixer nginx php72 dnsmasq mysql node yarn
+	brew install composer php-cs-fixer nginx php72 dnsmasq mysql node yarn php-code-sniffer
     brew services start mysql
 
 ### Valet
