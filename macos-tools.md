@@ -106,10 +106,49 @@ open in sublime
 
 `Go to File -> import settings -> select "phpstorm/phpstorm-settings.jar"`
 
-##### Code Sniffer
+##### Code Sniffer 
 
-`get the phpcs installation directory: which phpcs"`
+	install: brew install php-code-sniffer
 
-`Go to Preferences -> Languages & Frameworks -> PHP -> Code Sniffer -> configure with phpcs installation directory"`
+1. get the phpcs installation directory: which phpcs"
+2. Go to Preferences -> Languages & Frameworks -> PHP -> Code Sniffer -> configure with phpcs installation directory"
+3. Go to Preferences -> Editor -> Inspections -> PHP -> select 'PHP Code Sniffer Validation' and the desired PSR configuration"
 
-`Go to Preferences -> Editor -> Inspections -> PHP -> select 'PHP Code Sniffer Validation' and the desired PSR configuration"`
+##### Php Cs Fixer
+
+	install: brew install php-cs-fixer
+
+1. get the php-cs-fixer installation directory: php-cs-fixer"
+2. Go to Preferences -> Tools -> External Tools -> Create new
+3. Name: Type the name for the tool (ex: PHP-CS-FIXER)
+4. Description: Type the description for the tool (ex: Apply php-cs-fixer to the current file)
+5. Program: Paste the php-cs-fixer installation directory
+6. Arguments: Type the desired arguments (ex: --rules=@PSR2 fix $FileDir$/$FileName$)
+7. Working directory: $ProjectFileDir$
+8. Advance options: uncheck the option "Open console for tool output"
+
+*Alternative: create .php_cs file with the next content and run fixer without --rules param
+
+	<?php
+	$finder = PhpCsFixer\Finder::create()
+	    ->notPath('bootstrap/cache')
+	    ->notPath('storage')
+	    ->notPath('vendor')
+	    ->in(__DIR__)
+	    ->name('*.php')
+	    ->notName('*.blade.php')
+	    ->ignoreDotFiles(true)
+	    ->ignoreVCS(true);
+
+	return PhpCsFixer\Config::create()
+	    ->setRules(array(
+	        '@Symfony' => true,
+	        'binary_operator_spaces' => ['align_double_arrow' => true],
+	        'array_syntax' => ['syntax' => 'short'],
+	        'linebreak_after_opening_tag' => true,
+	        'not_operator_with_successor_space' => true,
+	        'ordered_imports' => true,
+	        'phpdoc_order' => true,
+	    ))
+	    ->setUsingCache(false)
+	    ->setFinder($finder);
