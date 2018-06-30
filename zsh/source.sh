@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 export PATH=~/.composer/vendor/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
 
 #powerlevel9k Theme
 POWERLEVEL9K_STATUS_VERBOSE=false
@@ -37,6 +38,16 @@ alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 alias nah="git reset --hard;git clean -df;"
 alias gitapprove="gapprove develop"
 # alias glog="git log --pretty=format:'%h - %an, %ar : %s'"
+
+function gitcommit() 
+{ 
+	if [[ $1 ]]; then
+		git add . 
+		git commit -m $1
+	else
+		echo 'please write a commit message as the first param';
+	fi
+}
 
 function gitpush() 
 { 
