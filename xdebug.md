@@ -52,13 +52,13 @@
     
 	[xdebug]
 	zend_extension="/usr/local/opt/php@7.2/pecl/20170718/xdebug.so"
-	xdebug.remote_autostart=1
-	xdebug.default_enable=1
-	xdebug.remote_port=9001
-	xdebug.remote_host=127.0.0.1
-	xdebug.remote_connect_back=1
-	xdebug.remote_enable=1
-	xdebug.idekey=PHPSTORM
+    xdebug.remote_autostart=1
+    xdebug.default_enable=1
+    xdebug.remote_port=9001
+    xdebug.remote_host=127.0.0.1
+    xdebug.remote_connect_back=1
+    xdebug.remote_enable=1
+    xdebug.idekey=PHPSTORM
     
     
 ### Update your `php.ini`
