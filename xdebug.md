@@ -44,12 +44,10 @@
 
 ### Add xdebug config to ini file
 
-
-* add these lines to /usr/local/etc/php/7.3/conf.d/ext-xdebug.ini
-
-
 	nano /usr/local/etc/php/7.3/conf.d/ext-xdebug.ini
-    
+	
+	#add these lines
+	
 	[xdebug]
 	zend_extension="/usr/local/opt/php@7.2/pecl/20170718/xdebug.so"
 	xdebug.remote_autostart=1
