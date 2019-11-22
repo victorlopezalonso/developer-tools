@@ -49,7 +49,7 @@
 
 
 	nano /usr/local/etc/php/7.3/conf.d/ext-xdebug.ini
-    
+	
 	[xdebug]
 	zend_extension="/usr/local/opt/php@7.2/pecl/20170718/xdebug.so"
     xdebug.remote_autostart=1
