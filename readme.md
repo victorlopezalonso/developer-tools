@@ -8,3 +8,5 @@
 
 [Laravel](laravel.md)
 
+[xDebug](xdebug.md)
+
