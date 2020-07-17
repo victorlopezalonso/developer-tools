@@ -1,43 +1,67 @@
 #!/bin/zsh
 
+#--------------------------------------------------------
+# Theme
+#--------------------------------------------------------
+prompt_context() {
+  # Custom prompt (Random emoji)
+  emojis=("⚡️" "😎" "🚀")
+  RAND_EMOJI_N=$(( $RANDOM % ${#emojis[@]} + 1))
+  prompt_segment black default "${emojis[$RAND_EMOJI_N]} "
+}
+
+#--------------------------------------------------------
+# Paths
+#--------------------------------------------------------
 export PATH=~/.composer/vendor/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
+export PATH="/usr/local/opt/php@7.3/bin:$PATH"'
+export PATH="/usr/local/opt/php@7.3/sbin:$PATH"'
 
-#powerlevel9k Theme
-POWERLEVEL9K_STATUS_VERBOSE=false
-POWERLEVEL9K_STATUS_OK_IN_NON_VERBOSE=true
-POWERLEVEL9K_PROMPT_ON_NEWLINE=false
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=''
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
-POWERLEVEL9K_DIR_OMIT_FIRST_CHARACTER=true
-POWERLEVEL9K_DIR_PATH_SEPARATOR=" $(print_icon "LEFT_SUBSEGMENT_SEPARATOR") "
-POWERLEVEL9K_CONTEXT_TEMPLATE=whoami
-POWERLEVEL9K_HOME_ICON=$'\UE12C '
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/apache-maven-3.6.0/bin
 
-#plugins
-# plugins=(colored-man colorize github jira vagrant virtualenv pip python osx zsh-syntax-highlighting zsh-autosuggestions)
-plugins=(colored-man colorize github osx zsh-syntax-highlighting zsh-autosuggestions)
-
-#sublime as default editor
+#--------------------------------------------------------
+# Terminal
+#--------------------------------------------------------
+plugins=(brew colored-man colorize github osx zsh-syntax-highlighting zsh-autosuggestions)
 export EDITOR='subl -w'
-
-# FileSearch
-function f() { find . -iname "*$1*" ${@:2} }
-function r() { grep "$1" ${@:2} -R . }
-
-# mkdir and cd
-function mkcd() { mkdir -p "$@" && cd "$_"; }
-
-# Aliases
 alias cl="clear && printf '\e[3J'"
 alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
-alias nah="git reset --hard;git clean -df;"
+
+#--------------------------------------------------------
+# React Native
+#--------------------------------------------------------
+alias rn="npx react-native"
+
+# android
+alias emu="emulator -avd"
+alias aemus="emulator -list-avds"
+alias shake="adb shell input keyevent KEYCODE_MENU"
+alias rnra="recompile-android && npx react-native run-android"
+alias rnba="recompile-android && cd android && ./gradlew assembleDebug && cd .."
+alias rnbar="recompile-android && cd android && ./gradlew assembleRelease && cd .."
+alias recompile-android="react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res"
+
+#ios
+alias iemus="xcrun simctl list devices"
+alias rnisim="react-native run-ios --simulator="
+alias rnri="npx react-native run-ios"
+alias record="xcrun simctl io booted recordVideo"
+
+#--------------------------------------------------------
+# Git
+#--------------------------------------------------------
+# delete merged local branches
+alias gcu="git branch --merged | egrep -v 'master|develop|development' | xargs git branch -d"
 alias gitapprove="gapprove develop"
-# alias glog="git log --pretty=format:'%h - %an, %ar : %s'"
+alias gitwho="git config --local -l"
+alias nah="git reset --hard;git clean -df;"
 
 function gitcommit() 
 { 
@@ -73,6 +97,11 @@ function gapprove()
 	fi
 }
 
+#--------------------------------------------------------
+# Laravel
+#--------------------------------------------------------
+alias pa="php artisan"
+
 function apicontroller()
 {
 	php artisan make:controller $1 --api
@@ -102,3 +131,12 @@ function adminresource()
 {
 	php artisan make:resource Admin/$1
 }
+
+composer-link() {  
+    composer config repositories.local '{"type": "path", "url": "'$1'"}' --file composer.json
+}
+
+#--------------------------------------------------------
+# Third party
+#--------------------------------------------------------
+alias mp3from="youtube-dl -x --audio-format 'mp3' --audio-quality '320K' --embed-thumbnail -o '%(title)s.%(ext)s' --metadata-from-title \"(?P<artist>.+?) - (?P<title>.+)\" "
