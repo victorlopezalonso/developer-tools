@@ -10,3 +10,5 @@
 
 [xDebug](xdebug.md)
 
+[Ubuntu server](ubuntu.md)
+
