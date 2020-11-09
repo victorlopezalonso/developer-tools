@@ -234,7 +234,7 @@ Run seeds
     # --no-interaction Do not ask any interactive question
     # --no-dev  Disables installation of require-dev packages.
     # --prefer-dist  Forces installation from package dist even for dev
-    cd $PWD && export COMPOSER_HOME=/var/www/.config/composer && composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader
+    export COMPOSER_HOME=/var/www/.config/composer && composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader
 
     # Run database migrations
     php artisan migrate --force
