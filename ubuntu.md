@@ -46,7 +46,7 @@ Manage MySQL user
     sudo systemctl restart apache2
 
     #add current user to www-data group
-    sudo adduser <user> www-data
+    sudo adduser $USER www-data
     sudo usermod -a -G www-data <user>
 
     #show groups
